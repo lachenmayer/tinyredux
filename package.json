@@ -1,0 +1,31 @@
+{
+  "name": "tinyredux",
+  "version": "1.0.0",
+  "description": "Redux implemented with React setState(). For when you want a reducer, but you can't be bothered with connecting stores and all that.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel index.js --out-file dist/index.js",
+    "watch": "babel --watch index.js --out-file dist/index.js",
+    "test": "ava test.js"
+  },
+  "author": "harry lachenmayer <harrylachenmayer@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^15.6.1"
+  },
+  "devDependencies": {
+    "ava": "^0.22.0",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "react-test-renderer": "^15.6.1"
+  },
+  "ava": {
+    "babel": {
+      "presets": [
+        "react"
+      ]
+    }
+  }
+}
