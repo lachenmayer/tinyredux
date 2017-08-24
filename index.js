@@ -2,10 +2,8 @@ import React from 'react'
 
 export const initialAction = {type: '__init__'}
 
-export default (WrappedComponent, reducer) =>
-  class Stateful extends React.Component {
-    static displayName = `Stateful(${getComponentDisplayName(WrappedComponent)})`
-
+export default function Stateful (WrappedComponent, reducer) {
+  class StatefulComponent extends React.Component {
     constructor (props) {
       super(props)
       if (typeof reducer !== 'function' && reducer.length !== 2) {
@@ -20,10 +18,10 @@ export default (WrappedComponent, reducer) =>
 
     render () {
       if (defined(this.props.dispatch)) {
-        console.warn(`${Stateful.displayName}: You provided a "dispatch" prop. This will be ignored. Remove the prop to get rid of this message.`)
+        console.warn(`${StatefulComponent.displayName}: You provided a "dispatch" prop. This will be ignored. Remove the prop to get rid of this message.`)
       }
       if (defined(this.props.state)) {
-        console.warn(`${Stateful.displayName}: You provided a "state" prop. This will be ignored. Remove the prop to get rid of this message.`)
+        console.warn(`${StatefulComponent.displayName}: You provided a "state" prop. This will be ignored. Remove the prop to get rid of this message.`)
       }
       return (
         <WrappedComponent
@@ -34,6 +32,11 @@ export default (WrappedComponent, reducer) =>
       )
     }
   }
+
+  StatefulComponent.displayName = `Stateful(${getComponentDisplayName(WrappedComponent)})`
+
+  return StatefulComponent
+}
 
 function getComponentDisplayName (Component) {
   return Component.displayName || Component.name || 'Unknown'

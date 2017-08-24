@@ -6,6 +6,7 @@
   "scripts": {
     "build": "babel index.js --out-file dist/index.js",
     "watch": "babel --watch index.js --out-file dist/index.js",
+    "lint": "standard --fix *.js",
     "test": "ava test.js"
   },
   "author": "harry lachenmayer <harrylachenmayer@gmail.com>",
@@ -16,10 +17,10 @@
   "devDependencies": {
     "ava": "^0.22.0",
     "babel-cli": "^6.26.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
-    "react-test-renderer": "^15.6.1"
+    "react-test-renderer": "^15.6.1",
+    "standard": "^10.0.3"
   },
   "ava": {
     "babel": {

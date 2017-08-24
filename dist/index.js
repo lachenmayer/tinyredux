@@ -9,6 +9,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+exports.default = Stateful;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -23,16 +25,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var initialAction = exports.initialAction = { type: '__init__' };
 
-exports.default = function (WrappedComponent, reducer) {
-  var _class, _temp;
+function Stateful(WrappedComponent, reducer) {
+  var StatefulComponent = function (_React$Component) {
+    _inherits(StatefulComponent, _React$Component);
 
-  return _temp = _class = function (_React$Component) {
-    _inherits(Stateful, _React$Component);
+    function StatefulComponent(props) {
+      _classCallCheck(this, StatefulComponent);
 
-    function Stateful(props) {
-      _classCallCheck(this, Stateful);
-
-      var _this = _possibleConstructorReturn(this, (Stateful.__proto__ || Object.getPrototypeOf(Stateful)).call(this, props));
+      var _this = _possibleConstructorReturn(this, (StatefulComponent.__proto__ || Object.getPrototypeOf(StatefulComponent)).call(this, props));
 
       if (typeof reducer !== 'function' && reducer.length !== 2) {
         throw new Error('reducer needs to be a function of shape (state, action) => state');
@@ -41,7 +41,7 @@ exports.default = function (WrappedComponent, reducer) {
       return _this;
     }
 
-    _createClass(Stateful, [{
+    _createClass(StatefulComponent, [{
       key: 'dispatch',
       value: function dispatch(action) {
         this.setState(function (state) {
@@ -52,10 +52,10 @@ exports.default = function (WrappedComponent, reducer) {
       key: 'render',
       value: function render() {
         if (defined(this.props.dispatch)) {
-          console.warn(Stateful.displayName + ': You provided a "dispatch" prop. This will be ignored. Remove the prop to get rid of this message.');
+          console.warn(StatefulComponent.displayName + ': You provided a "dispatch" prop. This will be ignored. Remove the prop to get rid of this message.');
         }
         if (defined(this.props.state)) {
-          console.warn(Stateful.displayName + ': You provided a "state" prop. This will be ignored. Remove the prop to get rid of this message.');
+          console.warn(StatefulComponent.displayName + ': You provided a "state" prop. This will be ignored. Remove the prop to get rid of this message.');
         }
         return _react2.default.createElement(WrappedComponent, _extends({}, this.props, {
           dispatch: this.dispatch.bind(this),
@@ -64,9 +64,13 @@ exports.default = function (WrappedComponent, reducer) {
       }
     }]);
 
-    return Stateful;
-  }(_react2.default.Component), _class.displayName = 'Stateful(' + getComponentDisplayName(WrappedComponent) + ')', _temp;
-};
+    return StatefulComponent;
+  }(_react2.default.Component);
+
+  StatefulComponent.displayName = 'Stateful(' + getComponentDisplayName(WrappedComponent) + ')';
+
+  return StatefulComponent;
+}
 
 function getComponentDisplayName(Component) {
   return Component.displayName || Component.name || 'Unknown';
