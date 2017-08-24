@@ -3,7 +3,7 @@
 ![banner](https://img.shields.io/badge/does%20this%20need%20a%20badge%3F-no%2C%20read%20the%20source-red.png)
 
 
-> [Redux](http://redux.js.org/) implemented with React setState(). For when you want a reducer, but you can&#39;t be bothered with connecting stores and all that.
+> [Redux](http://redux.js.org/) implemented with React setState(). For when you want a reducer, but you can't be bothered with connecting stores and all that.
 
 One of Redux's biggest appeals is that you can use it with any view framework, as long as it has some semblance of sanity.
 
